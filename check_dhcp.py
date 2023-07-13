@@ -76,10 +76,11 @@ def verify_dhcp_servers_device_reg(std_output):
         if (vlans_w_helpers == vlans_w_dhcp) and (len(vlans_w_dhcp) > 0):
             #print("Ip helpers have been applied to all vlans")
             iphelpersConfigured = True
+            verification = "Ip helpers have been applied to all vlans"
         if (vlans_w_helpers_global == vlans_w_dhcp_global) and (len(vlans_w_dhcp_global) > 0):
             #print("Ip helpers global have been applied to all vlans")
             iphelpersGlobalConfigured = True
-
+            verification = "Ip helpers Global have been applied to all vlans"
         if (iphelpersConfigured == True) and (iphelpersGlobalConfigured == True):
             verification = "DHCP servers configured in all vlans"
         else:
@@ -106,7 +107,7 @@ def verify_dhcp_servers_device_reg(std_output):
             i = 0
             missing_vlans_str = ""
             for vlan_h in vlans_w_helpers_global:
-                for vlan_d in vlans_w_dhcp:
+                for vlan_d in vlans_w_dhcp_global:
                     i += 1
                     if vlan_h == vlan_d:
                         i = 0
